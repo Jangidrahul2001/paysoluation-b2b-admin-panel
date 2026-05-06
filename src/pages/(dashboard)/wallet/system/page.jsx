@@ -20,6 +20,7 @@ import { apiEndpoints } from "../../../../api/apiEndpoints";
 import { handleValidationError } from "../../../../utils/helperFunction";
 import { toast } from "sonner";
 import SearchInput from "../../../../components/ui/SearchInput";
+import ClickToCopy from "../../../../components/ui/ClickToCopy";
 
 export default function WalletSystemPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -90,18 +91,9 @@ export default function WalletSystemPage() {
               <span className="text-slate-900 font-semibold text-[13px]">
                 {row.getValue("fullName")}
               </span>
-              <span
-                className="text-[11px] text-slate-400 font-medium tracking-tight cursor-pointer hover:text-slate-600 transition-colors"
-                onClick={() => {
-                  if (userName) {
-                    navigator.clipboard.writeText(userName);
-                    toast.success("Username copied to clipboard");
-                  }
-                }}
-                title="Click to copy Username"
-              >
+              <ClickToCopy text={userName} className={"text-[11px] text-slate-400 font-medium tracking-tight cursor-pointer hover:text-slate-600 transition-colors"}>
                 {userName || "N/A"}
-              </span>
+              </ClickToCopy>            
             </div>
           );
         },

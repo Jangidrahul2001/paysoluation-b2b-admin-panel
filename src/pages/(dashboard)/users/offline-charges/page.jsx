@@ -18,6 +18,7 @@ import { createPortal } from "react-dom"
 import { Select } from "../../../../components/ui/select"
 import { DropdownMenu, DropdownMenuContent } from "../../../../components/ui/dropdown-menu"
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
+import ClickToCopy from "../../../../components/ui/ClickToCopy"
 
 // Custom Rejection Modal Component
 function RejectionModal({ isOpen, onClose, onConfirm, chargeName, isProcessing }) {
@@ -324,16 +325,10 @@ export default function OfflineChargePage() {
       header: "Transaction Id",
       headerClassName: "text-center",
       cell: ({ row }) => (
-        <span
-          className="px-2.5 py-1 bg-amber-50 text-amber-600 border border-amber-100 rounded-md text-[11px] font-bold cursor-pointer hover:bg-amber-100 transition-colors inline-block"
-          onClick={() => {
-            navigator.clipboard.writeText(row.getValue("referenceId"));
-            toast.success("Transaction ID copied!");
-          }}
-          title="Click to copy"
-        >
+        <ClickToCopy text={row.getValue("referenceId")} className={"px-2.5 py-1 bg-amber-50 text-amber-600 border border-amber-100 rounded-md text-[11px] font-bold cursor-pointer hover:bg-amber-100 transition-colors inline-block"}>
           {row.getValue("referenceId")}
-        </span>
+        </ClickToCopy>
+
       )
     },
 

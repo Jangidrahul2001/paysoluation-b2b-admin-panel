@@ -22,6 +22,7 @@ import { DateRangePicker } from "../../../../components/ui/date-range-picker";
 import { ActionButtons } from "../../../../components/ui/ActionButtons";
 import StatusBadge from "../../../../components/ui/StatusBadge";
 import ExpandableMessage from "../../../../components/ui/ExpandableMessage";
+import ClickToCopy from "../../../../components/ui/ClickToCopy";
 
 
 export default function FundRequestPage() {
@@ -190,18 +191,10 @@ export default function FundRequestPage() {
             <span className="text-slate-900 font-semibold text-[13px]">
               {row.getValue("fullName") || "N/A"}
             </span>
-            <span
-              className="text-[11px] text-slate-400 font-medium tracking-tight truncate cursor-pointer hover:text-slate-600 transition-colors"
-              onClick={() => {
-                if (row.original.userName) {
-                  navigator.clipboard.writeText(row.original.userName);
-                  toast.success("User ID copied to clipboard");
-                }
-              }}
-              title="Click to copy"
-            >
-              {row.original.userName || ""}
-            </span>
+            <ClickToCopy text={row.original.userName} className={"text-[11px] text-slate-400 font-medium tracking-tight truncate cursor-pointer hover:text-slate-600 transition-colors"}>
+              {row.original.userName}
+            </ClickToCopy>
+
           </div>
         ),
       },
@@ -221,18 +214,10 @@ export default function FundRequestPage() {
           const utr = row.getValue("utrNumber");
           return (
             <div className="flex justify-center">
-              <span
-                title="Click to copy"
-                onClick={() => {
-                  if (utr) {
-                    navigator.clipboard.writeText(utr);
-                    toast.success("UTR Number copied to clipboard");
-                  }
-                }}
-                className="max-w-[150px] text-slate-600 font-semibold bg-slate-50 border border-slate-200 px-2.5 py-1 font-mono text-[11px] rounded-lg break-all inline-block leading-normal overflow-wrap-anywhere whitespace-normal cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 text-center"
-              >
-                {utr}
-              </span>
+              <ClickToCopy text={utr} className="max-w-[150px] text-slate-600 font-semibold bg-slate-50 border border-slate-200 px-2.5 py-1 font-mono text-[11px] rounded-lg break-all inline-block leading-normal overflow-wrap-anywhere whitespace-normal cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 text-center" >
+                  {utr}
+                </ClickToCopy>
+            
             </div>
           );
         },
