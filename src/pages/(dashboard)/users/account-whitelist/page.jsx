@@ -18,6 +18,7 @@ import StatusBadge from "../../../../components/ui/StatusBadge";
 import { ActionButtons } from "../../../../components/ui/ActionButtons";
 import { Button } from "../../../../components/ui/button";
 import ImageModal from "../../../../components/ui/ImageModal";
+import ClickToCopy from "../../../../components/ui/ClickToCopy"
 
 export default function AccountWhitelistPage() {
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -150,18 +151,9 @@ export default function AccountWhitelistPage() {
         cell: ({ row }) => {
           const accNo = row.getValue("accountNumber");
           return (
-            <span
-              className="text-slate-600 font-semibold bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 text-[12px] font-mono cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 inline-block"
-              onClick={() => {
-                if (accNo) {
-                  navigator.clipboard.writeText(accNo);
-                  toast.success("Account Number copied to clipboard");
-                }
-              }}
-              title="Click to copy"
-            >
+            <ClickToCopy text={accNo} className={"text-slate-600 font-semibold bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 text-[12px] font-mono cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 inline-block"}>
               {accNo}
-            </span>
+            </ClickToCopy>
           );
         },
       },
@@ -171,18 +163,10 @@ export default function AccountWhitelistPage() {
         cell: ({ row }) => {
           const ifsc = row.getValue("ifscCode");
           return (
-            <span
-              className="text-slate-600 font-semibold bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 text-[12px] font-mono cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 inline-block"
-              onClick={() => {
-                if (ifsc) {
-                  navigator.clipboard.writeText(ifsc);
-                  toast.success("IFSC Code copied to clipboard");
-                }
-              }}
-              title="Click to copy"
-            >
+            <ClickToCopy text={ifsc} className={"text-slate-600 font-semibold bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 text-[12px] font-mono cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 inline-block"}>
               {ifsc}
-            </span>
+            </ClickToCopy>
+
           );
         },
       },
@@ -195,7 +179,7 @@ export default function AccountWhitelistPage() {
               {row.getValue("accountHolderName")}
             </span>
             <span className="text-[11px] text-slate-400 font-medium tracking-tight">
-              {row.original.userId || "N/A"}
+              {row.original.userName || "N/A"}
             </span>
           </div>
         ),
@@ -207,26 +191,26 @@ export default function AccountWhitelistPage() {
           <span className="text-slate-500 font-medium text-[13px]">{row.getValue("bankName")}</span>
         ),
       },
-   {
-  header: "Documents",
-  center: true,
-  cell: ({ row }) => (
-    <div className="flex flex-col gap-1.5 py-1 items-center">
-      <button
-        onClick={() => { setSelectedFile(`${import.meta.env.VITE_API_URL}${row.original.chequeImageUrl}`); setImageModalOpen(true); }}
-        className="flex cursor-pointer items-center justify-center gap-1.5 text-[9px] font-black text-blue-600 uppercase tracking-widest hover:text-blue-800 transition-colors bg-blue-50/50 px-3 py-1 rounded-lg border border-blue-100/50 w-fit"
-      >
-        <File size={12} strokeWidth={3} /> View Cheque
-      </button>
-      <button
-        onClick={() => { setSelectedFile(`${import.meta.env.VITE_API_URL}${row.original.passbookOrBankStatementUrl}`); setImageModalOpen(true); }}
-        className="flex cursor-pointer items-center justify-center gap-1.5 text-[9px] font-black text-blue-600 uppercase tracking-widest hover:text-blue-800 transition-colors bg-blue-50/50 px-3 py-1 rounded-lg border border-blue-100/50 w-fit"
-      >
-        <File size={12} strokeWidth={3} /> View Statement
-      </button>
-    </div>
-  ),
-},
+      {
+        header: "Documents",
+        center: true,
+        cell: ({ row }) => (
+          <div className="flex flex-col gap-1.5 py-1 items-center">
+            <button
+              onClick={() => { setSelectedFile(`${import.meta.env.VITE_API_URL}${row.original.chequeImageUrl}`); setImageModalOpen(true); }}
+              className="flex cursor-pointer items-center justify-center gap-1.5 text-[9px] font-black text-blue-600 uppercase tracking-widest hover:text-blue-800 transition-colors bg-blue-50/50 px-3 py-1 rounded-lg border border-blue-100/50 w-fit"
+            >
+              <File size={12} strokeWidth={3} /> View Cheque
+            </button>
+            <button
+              onClick={() => { setSelectedFile(`${import.meta.env.VITE_API_URL}${row.original.passbookOrBankStatementUrl}`); setImageModalOpen(true); }}
+              className="flex cursor-pointer items-center justify-center gap-1.5 text-[9px] font-black text-blue-600 uppercase tracking-widest hover:text-blue-800 transition-colors bg-blue-50/50 px-3 py-1 rounded-lg border border-blue-100/50 w-fit"
+            >
+              <File size={12} strokeWidth={3} /> View Statement
+            </button>
+          </div>
+        ),
+      },
 
       {
         id: "actions",

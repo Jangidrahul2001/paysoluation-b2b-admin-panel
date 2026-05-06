@@ -37,6 +37,7 @@ import { handleValidationError } from "../../../../utils/helperFunction";
 import { DateRangePicker } from "../../../../components/ui/date-range-picker";
 import { FileImage } from "lucide-react";
 import ImageModal from "../../../../components/ui/ImageModal";
+import ClickToCopy from "../../../../components/ui/ClickToCopy";
 
 export default function PayoutBankRequestPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -196,18 +197,9 @@ export default function PayoutBankRequestPage() {
               <span className="text-slate-900 font-semibold text-[13px]">
                 {row.getValue("fullName")}
               </span>
-              <span 
-                className="text-[11px] text-slate-400 font-medium tracking-tight cursor-pointer hover:text-slate-600 transition-colors"
-                onClick={() => {
-                  if (userName) {
-                    navigator.clipboard.writeText(userName);
-                    toast.success("Username copied to clipboard");
-                  }
-                }}
-                title="Click to copy Username"
-              >
-                {userName || "N/A"}
-              </span>
+              <ClickToCopy className={"text-[11px] text-slate-400 font-medium tracking-tight cursor-pointer hover:text-slate-600 transition-colors"} text={userName}>
+               {userName || "N/A"}
+              </ClickToCopy>        
             </div>
           );
         },
@@ -223,18 +215,10 @@ export default function PayoutBankRequestPage() {
               <span className="text-slate-700 font-bold text-[13px]">
                 {row.getValue("bankName")}
               </span>
-              <span
-                className="text-[11px] text-slate-400 font-mono tracking-tighter uppercase font-medium cursor-pointer hover:text-slate-600 transition-colors"
-                onClick={() => {
-                  if (accountNumber) {
-                    navigator.clipboard.writeText(accountNumber);
-                    toast.success("Account Number copied to clipboard");
-                  }
-                }}
-                title="Click to copy Account Number"
-              >
-                A/c: {accountNumber}
-              </span>
+              <ClickToCopy  text={accountNumber} className={"text-[11px] text-slate-400 font-mono tracking-tighter uppercase font-medium cursor-pointer hover:text-slate-600 transition-colors"}>
+                  A/c: {accountNumber}
+              </ClickToCopy>
+             
             </div>
           );
         },
@@ -259,18 +243,11 @@ export default function PayoutBankRequestPage() {
           const ifscCode = row.getValue("ifscCode");
           return (
             <div className="flex justify-center">
-              <span
-                className="text-slate-600 font-medium bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 text-[12px] font-mono cursor-pointer hover:bg-slate-100 transition-colors cursor-pointer"
-                onClick={() => {
-                  if (ifscCode) {
-                    navigator.clipboard.writeText(ifscCode);
-                    toast.success("IFSC Code copied to clipboard");
-                  }
-                }}
-                title="Click to copy IFSC Code"
-              >
+              <ClickToCopy className={"text-slate-600 font-medium bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 text-[12px] font-mono cursor-pointer hover:bg-slate-100 transition-colors cursor-pointer"} text={ifscCode}>
                 {ifscCode || "N/A"}
-              </span>
+
+              </ClickToCopy>
+             
             </div>
           );
         },
