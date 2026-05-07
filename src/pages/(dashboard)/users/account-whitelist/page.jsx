@@ -148,6 +148,7 @@ export default function AccountWhitelistPage() {
       {
         accessorKey: "accountNumber",
         header: "ACCOUNT NUMBER",
+        center: true,
         cell: ({ row }) => {
           const accNo = row.getValue("accountNumber");
           return (
