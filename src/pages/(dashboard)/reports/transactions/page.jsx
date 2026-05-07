@@ -189,8 +189,8 @@ export default function TransactionSearchPage() {
               </span>
               <ClickToCopy text={userName}>
                 <span
-                  className="text-slate-400 text-[11px] font-black lowercase tracking-wider leading-none mt-1 flex items-center gap-1.5 truncate max-w-[150px] cursor-pointer hover:text-slate-600 transition-colors">
-                  <span className="truncate">({userName})</span>
+                  className="text-slate-400 text-[11px] font-black lowercase mt-1 flex items-center cursor-pointer hover:text-slate-600 transition-colors">
+                  ({userName})
                 </span>
               </ClickToCopy>
             </div>

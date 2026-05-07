@@ -186,15 +186,15 @@ export default function FundRequestPage() {
       {
         accessorKey: "fullName",
         header: "User",
+        center: true,
         cell: ({ row }) => (
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center " >
             <span className="text-slate-900 font-semibold text-[13px]">
               {row.getValue("fullName") || "N/A"}
             </span>
-            <ClickToCopy text={row.original.userName} className={"text-[11px] text-slate-400 font-medium tracking-tight truncate cursor-pointer hover:text-slate-600 transition-colors"}>
+            <ClickToCopy text={row.original.userName} className={"text-[11px] text-center text-slate-400 font-medium tracking-tight truncate cursor-pointer hover:text-slate-600 transition-colors"}>
               {row.original.userName}
             </ClickToCopy>
-
           </div>
         ),
       },
@@ -213,12 +213,12 @@ export default function FundRequestPage() {
         cell: ({ row }) => {
           const utr = row.getValue("utrNumber");
           return (
-            <div className="flex justify-center">
-              <ClickToCopy text={utr} className="max-w-[150px] text-slate-600 font-semibold bg-slate-50 border border-slate-200 px-2.5 py-1 font-mono text-[11px] rounded-lg break-all inline-block leading-normal overflow-wrap-anywhere whitespace-normal cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 text-center" >
-                  {utr}
-                </ClickToCopy>
-            
-            </div>
+
+            <ClickToCopy text={utr} className="whiteSpace-nowrap text-slate-600 font-semibold bg-slate-50 border border-slate-200 px-2.5 py-1 font-mono text-[11px] rounded-lg  cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95 " >
+              {utr}
+            </ClickToCopy>
+
+
           );
         },
       },

@@ -87,13 +87,13 @@ export default function WalletSystemPage() {
         cell: ({ row }) => {
           const userName = row.original.userName;
           return (
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center">
               <span className="text-slate-900 font-semibold text-[13px]">
                 {row.getValue("fullName")}
               </span>
               <ClickToCopy text={userName} className={"text-[11px] text-slate-400 font-medium tracking-tight cursor-pointer hover:text-slate-600 transition-colors"}>
                 {userName || "N/A"}
-              </ClickToCopy>            
+              </ClickToCopy>
             </div>
           );
         },

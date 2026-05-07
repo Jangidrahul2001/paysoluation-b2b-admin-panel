@@ -336,10 +336,10 @@ export default function ServiceWiseReportPage() {
               </span>
               {row.original.kycStatus === "approved" && <ShieldCheck className="w-3 h-3 text-emerald-500" />}
             </div>
-            <ClickToCopy text={row.original.userId}>
-              <span className="text-[11px] text-slate-500 font-medium lowercase inline-block mt-0.5">
+            <ClickToCopy text={row.original.userId} className={"text-[11px] text-slate-500  mt-0.5"}>
+            
                 ({row.original.userName})
-              </span>
+              
             </ClickToCopy>
           </div>
         ),
