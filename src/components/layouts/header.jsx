@@ -168,7 +168,7 @@ export function Header({ isCollapsed, setIsCollapsed, isMobile }) {
               <HeaderActionButton
                 icon={isCollapsed ? PanelLeftOpen : PanelLeftClose}
                 onClick={() => setIsCollapsed(!isCollapsed)}
-                className="!h-9 !w-9 bg-indigo-600 text-white rounded-full shadow-md border-white/5 active:scale-90"
+                className="!h-9 !w-9 bg-slate-800 text-white rounded-full shadow-md border-white/5 active:scale-90"
               />
             )}
 
@@ -298,7 +298,10 @@ export function Header({ isCollapsed, setIsCollapsed, isMobile }) {
                 >
                   <motion.button onClick={() => setIsOpen(!isOpen)}>
                     <img
-                      src={profile?.imgUrl || `https://ui-avatars.com/api/?name=${profile?.name}&background=0f172a&color=fff`}
+                      src={
+                        profile?.imgUrl ||
+                        `https://ui-avatars.com/api/?name=${profile?.name?.charAt(0)}&background=0f172a&color=fff`
+                      }
                       alt="Avatar"
                       className="h-full w-full object-cover"
                     />
