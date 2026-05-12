@@ -186,17 +186,7 @@ export default function ProfilePage() {
                   </span>
                 </h1>
               </div>
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-3 gap-x-8 text-[13px] text-slate-400 font-bold">
-                <span className="flex items-center gap-2.5 hover:text-slate-600 transition-colors cursor-default">
-                  <Briefcase className="w-4 h-4 text-slate-300" /> Administrative Hub
-                </span>
-                <span className="flex items-center gap-2.5 hover:text-slate-600 transition-colors cursor-default">
-                  <Clock className="w-4 h-4 text-slate-300" /> Last Active: 2 mins ago
-                </span>
-                <span className="flex items-center gap-2.5 hover:text-slate-600 transition-colors cursor-default">
-                  <MapPin className="w-4 h-4 text-slate-300" /> New Delhi, IN
-                </span>
-              </div>
+             
             </div>
           </div>
 
